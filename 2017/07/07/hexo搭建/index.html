@@ -86,149 +86,62 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-hexo搭建" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/07/07/hexo搭建/" class="article-date">
-  <time datetime="2017-07-07T06:34:59.000Z" itemprop="datePublished">2017-07-07</time>
-</a>
-    
+    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+    <%- partial('post/category') %>
   </div>
-
   <div class="article-inner">
-    
-    
+    <%- partial('post/gallery') %>
+    <% if (post.link || post.title){ %>
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Hexo 独立博客环境配置以及搭建
-    </h1>
-  
-
-        
+        <%- partial('post/title', {class_name: 'article-title'}) %>
       </header>
-    
+    <% } %>
     <div class="article-entry" itemprop="articleBody">
-      
-                <!-- 文章目录 -->
-                
-                <div id="toc" class="toc-article">
-                    <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Build-Prepare"><span class="toc-text">Build Prepare</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GitHub-Pages"><span class="toc-text">GitHub Pages</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#注册GitHub账号"><span class="toc-text">注册GitHub账号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#New-repository"><span class="toc-text">New repository</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Git"><span class="toc-text">Git</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#域名-解析"><span class="toc-text">域名/解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Node-js"><span class="toc-text">Node.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo"><span class="toc-text">Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Choose-Hexo"><span class="toc-text">Choose Hexo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Install-Hexo"><span class="toc-text">Install Hexo</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高度定制化"><span class="toc-text">高度定制化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#插入图片"><span class="toc-text">插入图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#增加侧边栏"><span class="toc-text">增加侧边栏</span></a></li></ol></li></ol>
-                </div>
-                
-        <p> 　　一直有搭一个完全属于自己的blog的想法，从摄影旅行呀，技术blog啊，手工作品呀，编曲乐队呀~记录一些人，记录一些事，青春里的点点滴滴，然后各种比赛拖延症一直到现在才有时间，也算是把这次的搭建整个过程给记录下来了，如果有需要的各位就可以直接享用啦！有不对的地方敬请指正！十分感谢！<br><a id="more"></a></p>
-<p><center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="430" height="450" src="http://music.163.com/outchain/player?type=0&id=485913354&auto=1&height=430"></iframe></center></p>
-<hr>
-<h3 id="Build-Prepare"><a href="#Build-Prepare" class="headerlink" title="Build Prepare"></a>Build Prepare</h3><blockquote>
-<p>　服务器: <a href="https://pages.github.com" target="_blank" rel="external">GitHub Pages</a><br>　域名: <a href="https://www.aliyun.com" target="_blank" rel="external">阿里云</a><br>　框架: <a href="https://nodejs.org" target="_blank" rel="external">Node.js</a><br>　选择: <a href="https://hexo.io" target="_blank" rel="external">hexo</a><br>　其他工具: <a href="http://git-scm.com" target="_blank" rel="external">Git</a></p>
-</blockquote>
-<h4 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h4><blockquote>
-<p>官网的介绍语是Websites for you and your projects，是给个人和个人的项目提供的网站服务。即我们可以把自己在GitHub上的项目寄存到GitHub Pages上。Pages有300M免费空间，偶尔不稳定，且GitHub是一个很有用的工具，借此熟悉GitHub流程</p>
-<h5 id="注册GitHub账号"><a href="#注册GitHub账号" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h5><p>　　<a href="https://github.com" target="_blank" rel="external">GitHub</a>可以理解为一个注重分享的开源代码社区，每个人看到有趣的Repository都可以Fork到本地来玩，当然在这里不扯这么多，进入网站之后按照提示一步步来即可完成注册，但一定要记得邮箱，因为几乎所有的GitHub通知都会通过邮箱来发送给你。大概会有一个这样的界面，可以按着Guide来走一遍<br><img src="/2017/07/07/hexo搭建/GitHub注册页面.png" alt="注册成功" title="注册成功"></p>
-<h5 id="New-repository"><a href="#New-repository" class="headerlink" title="New repository"></a>New repository</h5><p>　　登录 GitHub 之后，在页面右上角点击 + 加号按钮，点击 New repository。由于我们是新建一个个人网站项目，所有仓库的名称需要安装 GitHub 个人网站项目的规定来写。 规则就是：<code>http://YOUR-GITHUB-USERNAME.github.io</code>。比如我的 GitHub 用户名是 luoda888，那我就要填写 <code>http://luoda888.github.io</code>。选择<code>Public</code>模式，接着点进仓库即可看到仓库界面（我的是已经有内容了，刚注册时空仓库）。<br><img src="/2017/07/07/hexo搭建/GitHub仓库.png" alt="仓库" title="仓库"></p>
-<hr>
-</blockquote>
-<h4 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h4><blockquote>
-<p><a href="https://git-scm.com" target="_blank" rel="external">Git</a>是GitHub的一项非常好用的神器，以后遇见喜欢的项目都可以git clone下来在Mac,Windows上进入<a href="https://git-scm.com" target="_blank" rel="external">网站</a>直接下载安装就好，安装之后打开终端，输入<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Git --version</div></pre></td></tr></table></figure></p>
-<p>在安装完<code>Git</code>之后需要配置<code>SSH</code>，好处是让你每次Git的时候不需要输入账号密码，接下来检测是否有任意一个SSH秘钥<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Cd ~/.ssh</div></pre></td></tr></table></figure></p>
-<p>如果有的话，备份这个<code>SSH Key</code><br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir key_backup</div><div class="line">$ mv id_rsa* key_backu</div></pre></td></tr></table></figure></p>
-<p>生成你自己的<code>GitHub SSH Key</code><br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"xxx@xxx.com”</span></div></pre></td></tr></table></figure></p>
-<p>添加<code>SSh key</code>到<code>GitHub</code><br> 登录到<code>GitHub</code>页面，<code>Account Settings</code>-&gt;<code>SSH Public Keys</code>-&gt;<code>Add another key</code>将生成的key（<code>id_rsa.pub</code>文件）内容复制到输入框中存档。</p>
-<p>测试连接及设置个人信息<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ ssh git@github.com</div><div class="line">$ git config --global user.name <span class="string">"xxx”</span></div><div class="line">$ git config --global user.email xxx@xxx.com</div></pre></td></tr></table></figure></p>
-</blockquote>
-<hr>
-<h4 id="域名-解析"><a href="#域名-解析" class="headerlink" title="域名/解析"></a>域名/解析</h4><p>　　选择一个自己想要的域名，最近<code>.我爱你</code>这种域名也有了…挺适合表白的<br>　　前往<a href="https://wanwang.aliyun.com" target="_blank" rel="external">万网</a>根据你自己的想法买买买<br><img src="/2017/07/07/hexo搭建/阿里云.png" alt="购买界面" title="购买界面"><br>　　之后就是解析域名，把自己的域名和IP地址绑定起来<br><img src="/2017/07/07/hexo搭建/解析.png" alt="解析界面" title="解析界面"><br>　　IP地址则是你的<code>GitHub Pages</code>对应的地址<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Ping yourusername.github.io</div></pre></td></tr></table></figure></p>
-<img src="/2017/07/07/hexo搭建/解析设置.png" alt="设置" title="设置">
-<hr>
-<h4 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h4><p>　　在<a href="https://nodejs.org" target="_blank" rel="external">Node.js</a>官网选择合适的版本进行下载好后，如mac上，输入以检测版本<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm -v</div><div class="line">$ node -v</div></pre></td></tr></table></figure></p>
-<hr>
-<h4 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h4><h5 id="Choose-Hexo"><a href="#Choose-Hexo" class="headerlink" title="Choose Hexo"></a>Choose Hexo</h5><ul>
-<li>同比性能下颜值最高</li>
-<li>相当多的高颜值主题可供选择</li>
-<li>静态网站相比于多插件的<a href="https://cn.wordpress.org" target="_blank" rel="external">WordPress</a>可以不依托于价格高昂的服务器</li>
-<li>对于一个学生狗来说，虽然不是啥大花费，但能省则省总没错</li>
-<li>维护较为简单,加载网站速度超级快</li>
-<li>支持归档、分类、标签、Links、关于、目录</li>
-<li>高度自由的自定义主题</li>
-<li>支持markdown语法</li>
-</ul>
-<h5 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h5><blockquote>
-<p>找到自己想放置的目录<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/</div></pre></td></tr></table></figure></p>
-<p>利用之前配置好的<code>npm</code>进行安装并检验是否成功<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div><div class="line">$ hexo</div></pre></td></tr></table></figure></p>
-<p>因为有一些东西被Ban掉了，如果安装不了的话<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli --no-optional</div><div class="line">$ hexo</div></pre></td></tr></table></figure></p>
-</blockquote>
-<img src="/2017/07/07/hexo搭建/hexo安装.png" alt="hexo安装成功" title="hexo安装成功">
-<blockquote>
-<p>初始化博客/部署<code>Hexo</code><br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init &lt;folder&gt;  &#123;&lt;folder&gt;为你想命名的文件夹名称&#125;</div><div class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</div><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
-</blockquote>
-<img src="/2017/07/07/hexo搭建/部署.png" alt="部署完成" title="部署完成">
-<blockquote>
-<p>接下来应该可以看到<code>_config.yml</code>文件，打开至文件末端并进行如下设置<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy: </div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: http://github.com/yourname/yourname.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<p>这样你之后在进行<code>Hexo deploy</code>操作时即可直接上传到你的<code>GitHub仓库</code>，接着就是在本地生成静态网页了<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo generate 可简写为g</div><div class="line">$ hexo server   可简写为s</div><div class="line">$ hexo deploy   可简写为d</div></pre></td></tr></table></figure></p>
-<p>如果报错则输入以下命令<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-server --save</div><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p>接下来写一篇<code>Hello World</code>玩一玩<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo new Hello World</div><div class="line">$ hexo s</div></pre></td></tr></table></figure></p>
-<p>没错，新建一篇文章就是这么简单<code>Hexo new [article]</code>，并且已经可以在<code>http://localhost:4000/</code>预览了，比如我写了该文章<br> <img src="/2017/07/07/hexo搭建/初始界面.png" alt="本地界面" title="本地界面"><br>在执行完<code>Hexo deploy</code>操作后，在浏览器中输入<code>https://yourname.github.io</code>或者你自己的<a href="http://yourname.yoursite" target="_blank" rel="external">域名</a>，即可看到你自己的初始网站啦，在这之后每次部署只需要四部曲<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ hexo clean 清除本地缓存</div><div class="line">$ hexo g 编译生成静态页面</div><div class="line">$ hexo s 在本地端口预览</div><div class="line">$ hexo d 上传到GitHub</div></pre></td></tr></table></figure></p>
-</blockquote>
-<hr>
-<h3 id="高度定制化"><a href="#高度定制化" class="headerlink" title="高度定制化"></a>高度定制化</h3><h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><blockquote>
-<p><code>Hexo-asset-image</code>为我们提供了无需利用七牛云等图床，在本地即可完成图片的引用的功能<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install https://github.com/CodeFalling/hexo-asset-image --save</div></pre></td></tr></table></figure></p>
-<p>接下来在markdown的语法中即可设置图片的插入<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![](github-hexo-blog/yourpic.png)  （首页不可见）</div><div class="line">&#123;% asset_img yourpic.jpg 描述%&#125;   （首页可以看到）</div></pre></td></tr></table></figure></p>
-</blockquote>
-<h4 id="增加侧边栏"><a href="#增加侧边栏" class="headerlink" title="增加侧边栏"></a>增加侧边栏</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">I love you</div><div class="line">I really love you</div></pre></td></tr></table></figure>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ GitHub Pages <span class="string">"YourUser.io"</span>   Node.js <span class="string">"Hexo"</span>  Git</div></pre></td></tr></table></figure>
-<hr>
-<p> 　　利用Github Pages + Hexo 框架来搭建自己的blog，整体耗时大概在1h左右，</p>
-
-      
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+        <% if (theme.excerpt_link){ %>
+          <p class="article-more-link">
+            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+          </p>
+        <% } %>
+      <% } else { %>
+        <%- post.content %>
+      <% } %>
     </div>
     <footer class="article-footer">
-      
-        <a data-url="https://thinklbl.win/2017/07/07/hexo搭建/" data-id="cj659qaxk0001dqp6s229n5la" class="article-share-link" data-share="baidu" data-title="Hexo 独立博客环境配置以及搭建">Share</a>
-      
+      <% if (config.baidushare || theme.baidushare){ %>
+        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link" data-share="baidu" data-title="<%= post.title %>"><%= __('share') %></a>
+      <% } else { %>
+        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('share') %></a>
+      <% } %>
 
-      
-        <a href="https://thinklbl.win/2017/07/07/hexo搭建/#ds-thread" class="article-comment-link">Comments</a>
-      
-      
-      <!-- UY BEGIN -->
-      <div id="uyan_frame"></div>
-      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2138175"></script>
-      <!-- UY END -->
+      <% if (post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
+        <a href="<%- post.permalink %>#ds-thread" class="article-comment-link"><%= __('comments') %></a>
+      <% } else if (post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
+        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comments') %></a>
+      <% } %>
 
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
+      <%- partial('post/tag') %>
     </footer>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/07/09/我为什么追求仪式感/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          我为什么追求仪式感
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
-
+  <% if (!index){ %>
+    <%- partial('post/nav') %>
+  <% } %>
 </article>
 
-
+<% if (!index && post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2017/07/07/hexo搭建/" data-title="Hexo 独立博客环境配置以及搭建" data-url="https://thinklbl.win/2017/07/07/hexo搭建/">
-         <center>在月色与雪色之间，你是第三种绝色。</center>
+    <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path %>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div>
+  </section>
+<% } else if (!index && post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
   </section>
+<% } %>
 
 
 
@@ -243,7 +156,7 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/18岁/" style="font-size: 20px;">18岁</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/仪式感/" style="font-size: 10px;">仪式感</a> <a href="/tags/夜思/" style="font-size: 10px;">夜思</a> <a href="/tags/年度计划/" style="font-size: 10px;">年度计划</a> <a href="/tags/影评/" style="font-size: 10px;">影评</a> <a href="/tags/爱情/" style="font-size: 10px;">爱情</a>
+      <a href="/tags/18岁/" style="font-size: 20px;">18岁</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/代码质量/" style="font-size: 10px;">代码质量</a> <a href="/tags/仪式感/" style="font-size: 10px;">仪式感</a> <a href="/tags/外设/" style="font-size: 10px;">外设</a> <a href="/tags/夜思/" style="font-size: 10px;">夜思</a> <a href="/tags/年度计划/" style="font-size: 10px;">年度计划</a> <a href="/tags/影评/" style="font-size: 10px;">影评</a> <a href="/tags/爱情/" style="font-size: 10px;">爱情</a>
     </div>
   </div>
 
@@ -252,7 +165,7 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">2017.08</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">2017.07</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">2017.08</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">2017.07</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -262,6 +175,10 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/08/12/外设·键盘和显示屏的选择/">外设·键盘和显示屏的选择</a>
+          </li>
         
           <li>
             <a href="/2017/08/04/表情识别GitHub项目/">表情识别GitHub项目</a>
@@ -277,10 +194,6 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
         
           <li>
             <a href="/2017/07/09/我为什么追求仪式感/">我为什么追求仪式感</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/07/hexo搭建/">Hexo 独立博客环境配置以及搭建</a>
           </li>
         
       </ul>

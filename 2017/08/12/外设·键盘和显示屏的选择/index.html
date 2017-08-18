@@ -4,17 +4,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Deep Learning | Mr. Luo Says</title>
+  <title>外设·键盘和显示屏的选择 | Mr. Luo Says</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="希望变成一只有情调的码农">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mr. Luo Says">
-<meta property="og:url" content="https://thinklbl.win/tags/Deep-Learning/index.html">
+  <meta name="description" content="想让自己的女朋友好看一点有错吗？！">
+<meta name="keywords" content="外设,代码质量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="外设·键盘和显示屏的选择">
+<meta property="og:url" content="https://thinklbl.win/2017/08/12/外设·键盘和显示屏的选择/index.html">
 <meta property="og:site_name" content="Mr. Luo Says">
-<meta property="og:description" content="希望变成一只有情调的码农">
+<meta property="og:description" content="想让自己的女朋友好看一点有错吗？！">
+<meta property="og:updated_time" content="2017-08-12T15:08:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mr. Luo Says">
-<meta name="twitter:description" content="希望变成一只有情调的码农">
+<meta name="twitter:title" content="外设·键盘和显示屏的选择">
+<meta name="twitter:description" content="想让自己的女朋友好看一点有错吗？！">
   
     <link rel="alternative" href="/atom.xml" title="Mr. Luo Says" type="application/atom+xml">
   
@@ -75,39 +77,65 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/08/04/表情识别GitHub项目/" class="archive-article-date">
-  <time datetime="2017-08-04T13:08:14.000Z" itemprop="datePublished">08-04</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/04/表情识别GitHub项目/">表情识别GitHub项目</a>
-    </h1>
-  
-
-    </header>
+      <section id="main"><article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+    <%- partial('post/category') %>
   </div>
+  <div class="article-inner">
+    <%- partial('post/gallery') %>
+    <% if (post.link || post.title){ %>
+      <header class="article-header">
+        <%- partial('post/title', {class_name: 'article-title'}) %>
+      </header>
+    <% } %>
+    <div class="article-entry" itemprop="articleBody">
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+        <% if (theme.excerpt_link){ %>
+          <p class="article-more-link">
+            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+          </p>
+        <% } %>
+      <% } else { %>
+        <%- post.content %>
+      <% } %>
+    </div>
+    <footer class="article-footer">
+      <% if (config.baidushare || theme.baidushare){ %>
+        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link" data-share="baidu" data-title="<%= post.title %>"><%= __('share') %></a>
+      <% } else { %>
+        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('share') %></a>
+      <% } %>
+
+      <% if (post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
+        <a href="<%- post.permalink %>#ds-thread" class="article-comment-link"><%= __('comments') %></a>
+      <% } else if (post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
+        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comments') %></a>
+      <% } %>
+
+      <%- partial('post/tag') %>
+    </footer>
+  </div>
+  <% if (!index){ %>
+    <%- partial('post/nav') %>
+  <% } %>
 </article>
-  
-  
-    </div></section>
-  
+
+<% if (!index && post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path %>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div>
+  </section>
+<% } else if (!index && post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+<% } %>
+
+
+
 
 </section>
       

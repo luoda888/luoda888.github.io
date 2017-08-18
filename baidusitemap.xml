@@ -4,14 +4,16 @@
 
     
   <url>
-    <loc>https://thinklbl.win/2017/08/04/%E8%A1%A8%E6%83%85%E8%AF%86%E5%88%ABGitHub%E9%A1%B9%E7%9B%AE/</loc>
-    <lastmod>2017-08-04T13:09:49.000Z</lastmod>
+    <loc>https://thinklbl.win/2017/08/12/%E5%A4%96%E8%AE%BE%C2%B7%E9%94%AE%E7%9B%98%E5%92%8C%E6%98%BE%E7%A4%BA%E5%B1%8F%E7%9A%84%E9%80%89%E6%8B%A9/</loc>
+    <lastmod>2017-08-12T15:08:49.000Z</lastmod>
     <data>
         <display>
-        <title>表情识别GitHub项目</title>
-        <pubTime>2017-08-04T13:08:14.000Z</pubTime>
+        <title>外设·键盘和显示屏的选择</title>
+        <pubTime>2017-08-12T15:02:42.000Z</pubTime>
         
-        <tag>Deep Learning</tag>
+        <tag>外设</tag>
+         
+        <tag>代码质量</tag>
          
          
            
@@ -22,7 +24,7 @@
     
   <url>
     <loc>https://thinklbl.win/2017/07/14/%E6%80%A6%E7%84%B6%E5%BF%83%E5%8A%A8%C2%B7%E5%BD%B1%E8%AF%84/</loc>
-    <lastmod>2017-07-14T06:39:35.000Z</lastmod>
+    <lastmod>2017-08-12T15:07:37.000Z</lastmod>
     <data>
         <display>
         <title>怦然心动·影评</title>
@@ -33,6 +35,23 @@
         <tag>影评</tag>
          
         <tag>爱情</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://thinklbl.win/2017/08/04/%E8%A1%A8%E6%83%85%E8%AF%86%E5%88%ABGitHub%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2017-08-04T13:09:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>表情识别GitHub项目</title>
+        <pubTime>2017-08-04T13:08:14.000Z</pubTime>
+        
+        <tag>Deep Learning</tag>
          
          
            
