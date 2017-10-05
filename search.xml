@@ -5,10 +5,10 @@
     <entry>
       <title><![CDATA[机器学习入门计划]]></title>
       <url>/2017/10/04/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/</url>
-      <content type="html"><![CDATA[<p>Hello! Machine Learning@</p>
+      <content type="html"><![CDATA[<p>　　Hello! <font color="red">Machine Learning!</font></p>
 <center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=34528998&auto=1&height=66"></iframe></center>
 
-<h2 id="为什么要入门机器学习"><a href="#为什么要入门机器学习" class="headerlink" title="为什么要入门机器学习"></a>为什么要入门机器学习</h2><p>　　很简单</p>
+<h2 id="为什么要入门机器学习"><a href="#为什么要入门机器学习" class="headerlink" title="为什么要入门机器学习"></a>为什么要入门机器学习</h2><p>　　很简单，机器学习是目前时代的一个大潮流，大方向。在数据量和计算能力大幅提升之后，深层神经网络具有了工业应用的可能性，那么我们不禁把目光投向其他经典机器学习算法，如<code>SVM</code>,<code>Logistic</code>,<code>Random Forest</code>,<code>隐马尔科夫链</code>等会不会也能进行模型上的革新使得能够用于更大数据的计算；接着我们可以反思<code>BP误差反向传播算法</code>是否符合生物学本质，因为机器学习算法的本质我认为仍是基于数理逻辑使得机器仿真人类的行为，利用规则的相似性完成这次碳基到硅基的跃迁，随着生物技术的进步，如今流行的权值更新算法，神经元的传递过程是否会存在不合理之处，我们应该如何进行改进；再考虑到计算能力，既然<code>GPU</code>时代已经到来，那么在此之后会不会出现专用于机器学习的处理器？这些都是我们这个时代能够探索的内容，未来20年是我们的。</p>
 ]]></content>
       
         
