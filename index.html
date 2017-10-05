@@ -77,367 +77,338 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
     <div class="outer">
       <section id="main">
   
-    <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <article id="post-机器学习入门" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
-    <%- partial('post/category') %>
+    <a href="/2017/10/04/机器学习入门/" class="article-date">
+  <time datetime="2017-10-04T06:47:54.000Z" itemprop="datePublished">2017-10-04</time>
+</a>
+    
   </div>
+
   <div class="article-inner">
-    <%- partial('post/gallery') %>
-    <% if (post.link || post.title){ %>
+    
+    
       <header class="article-header">
-        <%- partial('post/title', {class_name: 'article-title'}) %>
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/04/机器学习入门/">机器学习入门计划</a>
+    </h1>
+  
+
+        
       </header>
-    <% } %>
+    
     <div class="article-entry" itemprop="articleBody">
-      <% if (post.excerpt && index){ %>
-        <%- post.excerpt %>
-        <% if (theme.excerpt_link){ %>
-          <p class="article-more-link">
-            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
-          </p>
-        <% } %>
-      <% } else { %>
-        <%- post.content %>
-      <% } %>
+      
+                <!-- 文章目录 -->
+                
+        <p>　　Hello! <font color="red">Machine Learning!</font></p>
+<center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=34528998&auto=1&height=66"></iframe></center>
+
+<h2 id="为什么要入门机器学习"><a href="#为什么要入门机器学习" class="headerlink" title="为什么要入门机器学习"></a>为什么要入门机器学习</h2><p>　　很简单，机器学习是目前时代的一个大潮流，大方向。在数据量和计算能力大幅提升之后，深层神经网络具有了工业应用的可能性，那么我们不禁把目光投向其他经典机器学习算法，如<code>SVM</code>,<code>Logistic</code>,<code>Random Forest</code>,<code>隐马尔科夫链</code>等会不会也能进行模型上的革新使得能够用于更大数据的计算；接着我们可以反思<code>BP误差反向传播算法</code>是否符合生物学本质，因为机器学习算法的本质我认为仍是基于数理逻辑使得机器仿真人类的行为，利用规则的相似性完成这次碳基到硅基的跃迁，随着生物技术的进步，如今流行的权值更新算法，神经元的传递过程是否会存在不合理之处，我们应该如何进行改进；再考虑到计算能力，既然<code>GPU</code>时代已经到来，那么在此之后会不会出现专用于机器学习的处理器？这些都是我们这个时代能够探索的内容，未来20年是我们的。</p>
+
+      
     </div>
     <footer class="article-footer">
-      <% if (config.baidushare || theme.baidushare){ %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link" data-share="baidu" data-title="<%= post.title %>"><%= __('share') %></a>
-      <% } else { %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('share') %></a>
-      <% } %>
+      
+        <a data-url="https://thinklbl.win/2017/10/04/机器学习入门/" data-id="cj8dvsvea0009tup67z9qcxkn" class="article-share-link" data-share="baidu" data-title="机器学习入门计划">分享到</a>
+      
 
-      <% if (post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-        <a href="<%- post.permalink %>#ds-thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } else if (post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } %>
+      
+        <a href="https://thinklbl.win/2017/10/04/机器学习入门/#ds-thread" class="article-comment-link">评论</a>
+      
+      
 
-      <%- partial('post/tag') %>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/18岁/">18岁</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
     </footer>
   </div>
-  <% if (!index){ %>
-    <%- partial('post/nav') %>
-  <% } %>
+  
+
 </article>
 
-<% if (!index && post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path %>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div>
-  </section>
-<% } else if (!index && post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-  <section id="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-<% } %>
 
 
 
 
   
-    <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <article id="post-外设·键盘和显示屏的选择" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
-    <%- partial('post/category') %>
+    <a href="/2017/08/12/外设·键盘和显示屏的选择/" class="article-date">
+  <time datetime="2017-08-12T15:02:42.000Z" itemprop="datePublished">2017-08-12</time>
+</a>
+    
   </div>
+
   <div class="article-inner">
-    <%- partial('post/gallery') %>
-    <% if (post.link || post.title){ %>
+    
+    
       <header class="article-header">
-        <%- partial('post/title', {class_name: 'article-title'}) %>
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/12/外设·键盘和显示屏的选择/">外设·键盘和显示屏的选择</a>
+    </h1>
+  
+
+        
       </header>
-    <% } %>
+    
     <div class="article-entry" itemprop="articleBody">
-      <% if (post.excerpt && index){ %>
-        <%- post.excerpt %>
-        <% if (theme.excerpt_link){ %>
+      
+        <p>　　想让自己的女朋友好看一点有错吗？！</p>
+        
           <p class="article-more-link">
-            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+            <a href="/2017/08/12/外设·键盘和显示屏的选择/#more">Read More</a>
           </p>
-        <% } %>
-      <% } else { %>
-        <%- post.content %>
-      <% } %>
+        
+      
     </div>
     <footer class="article-footer">
-      <% if (config.baidushare || theme.baidushare){ %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link" data-share="baidu" data-title="<%= post.title %>"><%= __('share') %></a>
-      <% } else { %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('share') %></a>
-      <% } %>
+      
+        <a data-url="https://thinklbl.win/2017/08/12/外设·键盘和显示屏的选择/" data-id="cj8dvsvdb0002tup6ltjrrj9j" class="article-share-link" data-share="baidu" data-title="外设·键盘和显示屏的选择">分享到</a>
+      
 
-      <% if (post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-        <a href="<%- post.permalink %>#ds-thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } else if (post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } %>
+      
+        <a href="https://thinklbl.win/2017/08/12/外设·键盘和显示屏的选择/#ds-thread" class="article-comment-link">评论</a>
+      
+      
 
-      <%- partial('post/tag') %>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代码质量/">代码质量</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/外设/">外设</a></li></ul>
+
     </footer>
   </div>
-  <% if (!index){ %>
-    <%- partial('post/nav') %>
-  <% } %>
+  
+
 </article>
 
-<% if (!index && post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path %>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div>
-  </section>
-<% } else if (!index && post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-  <section id="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-<% } %>
 
 
 
 
   
-    <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <article id="post-怦然心动·影评" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
-    <%- partial('post/category') %>
+    <a href="/2017/07/14/怦然心动·影评/" class="article-date">
+  <time datetime="2017-07-14T06:06:07.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
   </div>
+
   <div class="article-inner">
-    <%- partial('post/gallery') %>
-    <% if (post.link || post.title){ %>
+    
+    
       <header class="article-header">
-        <%- partial('post/title', {class_name: 'article-title'}) %>
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/怦然心动·影评/">怦然心动·影评</a>
+    </h1>
+  
+
+        
       </header>
-    <% } %>
+    
     <div class="article-entry" itemprop="articleBody">
-      <% if (post.excerpt && index){ %>
-        <%- post.excerpt %>
-        <% if (theme.excerpt_link){ %>
+      
+        <p>　　在漫长岁月里，会不会有属于你的怦然心动出现？<br></p>
+        
           <p class="article-more-link">
-            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+            <a href="/2017/07/14/怦然心动·影评/#more">Read More</a>
           </p>
-        <% } %>
-      <% } else { %>
-        <%- post.content %>
-      <% } %>
+        
+      
     </div>
     <footer class="article-footer">
-      <% if (config.baidushare || theme.baidushare){ %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link" data-share="baidu" data-title="<%= post.title %>"><%= __('share') %></a>
-      <% } else { %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('share') %></a>
-      <% } %>
+      
+        <a data-url="https://thinklbl.win/2017/07/14/怦然心动·影评/" data-id="cj8dvsvdu0005tup643815c3x" class="article-share-link" data-share="baidu" data-title="怦然心动·影评">分享到</a>
+      
 
-      <% if (post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-        <a href="<%- post.permalink %>#ds-thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } else if (post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } %>
+      
+        <a href="https://thinklbl.win/2017/07/14/怦然心动·影评/#ds-thread" class="article-comment-link">评论</a>
+      
+      
 
-      <%- partial('post/tag') %>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/18岁/">18岁</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/影评/">影评</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爱情/">爱情</a></li></ul>
+
     </footer>
   </div>
-  <% if (!index){ %>
-    <%- partial('post/nav') %>
-  <% } %>
+  
+
 </article>
 
-<% if (!index && post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path %>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div>
-  </section>
-<% } else if (!index && post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-  <section id="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-<% } %>
 
 
 
 
   
-    <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <article id="post-年度之歌" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
-    <%- partial('post/category') %>
+    <a href="/2017/07/11/年度之歌/" class="article-date">
+  <time datetime="2017-07-11T09:40:55.000Z" itemprop="datePublished">2017-07-11</time>
+</a>
+    
   </div>
+
   <div class="article-inner">
-    <%- partial('post/gallery') %>
-    <% if (post.link || post.title){ %>
+    
+    
       <header class="article-header">
-        <%- partial('post/title', {class_name: 'article-title'}) %>
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/11/年度之歌/">年度之歌</a>
+    </h1>
+  
+
+        
       </header>
-    <% } %>
+    
     <div class="article-entry" itemprop="articleBody">
-      <% if (post.excerpt && index){ %>
-        <%- post.excerpt %>
-        <% if (theme.excerpt_link){ %>
+      
+        <p>　　<font color="red">青春</font>不做点有意义的事情简直是浪费。先听一首哥哥的歌吧~<br></p>
+        
           <p class="article-more-link">
-            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+            <a href="/2017/07/11/年度之歌/#more">Read More</a>
           </p>
-        <% } %>
-      <% } else { %>
-        <%- post.content %>
-      <% } %>
+        
+      
     </div>
     <footer class="article-footer">
-      <% if (config.baidushare || theme.baidushare){ %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link" data-share="baidu" data-title="<%= post.title %>"><%= __('share') %></a>
-      <% } else { %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('share') %></a>
-      <% } %>
+      
+        <a data-url="https://thinklbl.win/2017/07/11/年度之歌/" data-id="cj8dvsvdk0004tup6s4s89sma" class="article-share-link" data-share="baidu" data-title="年度之歌">分享到</a>
+      
 
-      <% if (post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-        <a href="<%- post.permalink %>#ds-thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } else if (post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } %>
+      
+        <a href="https://thinklbl.win/2017/07/11/年度之歌/#ds-thread" class="article-comment-link">评论</a>
+      
+      
 
-      <%- partial('post/tag') %>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/18岁/">18岁</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/年度计划/">年度计划</a></li></ul>
+
     </footer>
   </div>
-  <% if (!index){ %>
-    <%- partial('post/nav') %>
-  <% } %>
+  
+
 </article>
 
-<% if (!index && post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path %>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div>
-  </section>
-<% } else if (!index && post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-  <section id="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-<% } %>
 
 
 
 
   
-    <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <article id="post-我为什么追求仪式感" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
-    <%- partial('post/category') %>
+    <a href="/2017/07/09/我为什么追求仪式感/" class="article-date">
+  <time datetime="2017-07-09T12:16:31.000Z" itemprop="datePublished">2017-07-09</time>
+</a>
+    
   </div>
+
   <div class="article-inner">
-    <%- partial('post/gallery') %>
-    <% if (post.link || post.title){ %>
+    
+    
       <header class="article-header">
-        <%- partial('post/title', {class_name: 'article-title'}) %>
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/09/我为什么追求仪式感/">我为什么追求仪式感</a>
+    </h1>
+  
+
+        
       </header>
-    <% } %>
+    
     <div class="article-entry" itemprop="articleBody">
-      <% if (post.excerpt && index){ %>
-        <%- post.excerpt %>
-        <% if (theme.excerpt_link){ %>
+      
+        <p>　　逐渐发现我把自己生活里的一些小事开始<em>仪式化</em>，很开心，很幸福。<br></p>
+        
           <p class="article-more-link">
-            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+            <a href="/2017/07/09/我为什么追求仪式感/#more">Read More</a>
           </p>
-        <% } %>
-      <% } else { %>
-        <%- post.content %>
-      <% } %>
+        
+      
     </div>
     <footer class="article-footer">
-      <% if (config.baidushare || theme.baidushare){ %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link" data-share="baidu" data-title="<%= post.title %>"><%= __('share') %></a>
-      <% } else { %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('share') %></a>
-      <% } %>
+      
+        <a data-url="https://thinklbl.win/2017/07/09/我为什么追求仪式感/" data-id="cj8dvsve20006tup67vxkfl4c" class="article-share-link" data-share="baidu" data-title="我为什么追求仪式感">分享到</a>
+      
 
-      <% if (post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-        <a href="<%- post.permalink %>#ds-thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } else if (post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } %>
+      
+        <a href="https://thinklbl.win/2017/07/09/我为什么追求仪式感/#ds-thread" class="article-comment-link">评论</a>
+      
+      
 
-      <%- partial('post/tag') %>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/仪式感/">仪式感</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/夜思/">夜思</a></li></ul>
+
     </footer>
   </div>
-  <% if (!index){ %>
-    <%- partial('post/nav') %>
-  <% } %>
+  
+
 </article>
 
-<% if (!index && post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path %>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div>
-  </section>
-<% } else if (!index && post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-  <section id="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-<% } %>
 
 
 
 
   
-    <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <article id="post-hexo搭建" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
-    <%- partial('post/category') %>
+    <a href="/2017/07/07/hexo搭建/" class="article-date">
+  <time datetime="2017-07-07T06:34:59.000Z" itemprop="datePublished">2017-07-07</time>
+</a>
+    
   </div>
+
   <div class="article-inner">
-    <%- partial('post/gallery') %>
-    <% if (post.link || post.title){ %>
+    
+    
       <header class="article-header">
-        <%- partial('post/title', {class_name: 'article-title'}) %>
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/07/hexo搭建/">Hexo 独立博客环境配置以及搭建</a>
+    </h1>
+  
+
+        
       </header>
-    <% } %>
+    
     <div class="article-entry" itemprop="articleBody">
-      <% if (post.excerpt && index){ %>
-        <%- post.excerpt %>
-        <% if (theme.excerpt_link){ %>
+      
+        <p> 　　一直有搭一个完全属于自己的blog的想法，从摄影旅行呀，技术blog啊，手工作品呀，编曲乐队呀~记录一些人，记录一些事，青春里的点点滴滴，然后各种比赛拖延症一直到现在才有时间，也算是把这次的搭建整个过程给记录下来了，如果有需要的各位就可以直接享用啦！有不对的地方敬请指正！十分感谢！<br></p>
+        
           <p class="article-more-link">
-            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+            <a href="/2017/07/07/hexo搭建/#more">Read More</a>
           </p>
-        <% } %>
-      <% } else { %>
-        <%- post.content %>
-      <% } %>
+        
+      
     </div>
     <footer class="article-footer">
-      <% if (config.baidushare || theme.baidushare){ %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link" data-share="baidu" data-title="<%= post.title %>"><%= __('share') %></a>
-      <% } else { %>
-        <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('share') %></a>
-      <% } %>
+      
+        <a data-url="https://thinklbl.win/2017/07/07/hexo搭建/" data-id="cj8dvsvd00001tup6j4hrlak9" class="article-share-link" data-share="baidu" data-title="Hexo 独立博客环境配置以及搭建">分享到</a>
+      
 
-      <% if (post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-        <a href="<%- post.permalink %>#ds-thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } else if (post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comments') %></a>
-      <% } %>
+      
+        <a href="https://thinklbl.win/2017/07/07/hexo搭建/#ds-thread" class="article-comment-link">评论</a>
+      
+      
 
-      <%- partial('post/tag') %>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
     </footer>
   </div>
-  <% if (!index){ %>
-    <%- partial('post/nav') %>
-  <% } %>
+  
+
 </article>
 
-<% if (!index && post.comments && (config.duoshuo_shortname || theme.duoshuo_shortname)){ %>
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path %>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div>
-  </section>
-<% } else if (!index && post.comments && (config.disqus_shortname || theme.disqus_shortname)){ %>
-  <section id="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-<% } %>
 
 
 
@@ -452,7 +423,7 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
       <a href="/tags/18岁/" style="font-size: 20px;">18岁</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/代码质量/" style="font-size: 10px;">代码质量</a> <a href="/tags/仪式感/" style="font-size: 10px;">仪式感</a> <a href="/tags/外设/" style="font-size: 10px;">外设</a> <a href="/tags/夜思/" style="font-size: 10px;">夜思</a> <a href="/tags/年度计划/" style="font-size: 10px;">年度计划</a> <a href="/tags/影评/" style="font-size: 10px;">影评</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/爱情/" style="font-size: 10px;">爱情</a>
     </div>
@@ -461,7 +432,7 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">2017.10</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">2017.08</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">2017.07</a><span class="archive-list-count">4</span></li></ul>
     </div>
@@ -470,7 +441,7 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
         
@@ -523,7 +494,7 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Links</h3>
+    <h3 class="widget-title">友情链接</h3>
     <div class="widget">
       <ul>
         
@@ -569,7 +540,7 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
 </nav>
   <!-- totop start -->
 <div id="totop">
-<a title="totop"><img src="/img/scrollup.png"/></a>
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 </div>
 
 <!-- totop end -->
