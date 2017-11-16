@@ -6,16 +6,16 @@
   
   <title>天池-商铺Wifi精准定位 | Mr. Luo Says</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写个简单分享，作为第一次成功参加天池竞赛的纪念吧。 要完成的任务是：预测User处于哪个Shop 先看看是否能对User画像，数据探索一波发现相同用户去的还是比较少的。那么考虑能否对Shop画像呢？(category,price不知道咋用) 两个方向，Shop的WiFi环境(WiFi_info)，Shop的时空特征(time_stamp,longtitude,latitude)， 那首先是对这个应">
+  <meta name="description" content="写个简单分享，作为第一次成功参加天池竞赛的纪念吧。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="天池-商铺Wifi精准定位">
 <meta property="og:url" content="https://thinklbl.win/2017/11/16/天池-商铺Wifi精准定位/index.html">
 <meta property="og:site_name" content="Mr. Luo Says">
-<meta property="og:description" content="写个简单分享，作为第一次成功参加天池竞赛的纪念吧。 要完成的任务是：预测User处于哪个Shop 先看看是否能对User画像，数据探索一波发现相同用户去的还是比较少的。那么考虑能否对Shop画像呢？(category,price不知道咋用) 两个方向，Shop的WiFi环境(WiFi_info)，Shop的时空特征(time_stamp,longtitude,latitude)， 那首先是对这个应">
-<meta property="og:updated_time" content="2017-11-16T14:45:44.000Z">
+<meta property="og:description" content="写个简单分享，作为第一次成功参加天池竞赛的纪念吧。">
+<meta property="og:updated_time" content="2017-11-16T14:50:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天池-商铺Wifi精准定位">
-<meta name="twitter:description" content="写个简单分享，作为第一次成功参加天池竞赛的纪念吧。 要完成的任务是：预测User处于哪个Shop 先看看是否能对User画像，数据探索一波发现相同用户去的还是比较少的。那么考虑能否对Shop画像呢？(category,price不知道咋用) 两个方向，Shop的WiFi环境(WiFi_info)，Shop的时空特征(time_stamp,longtitude,latitude)， 那首先是对这个应">
+<meta name="twitter:description" content="写个简单分享，作为第一次成功参加天池竞赛的纪念吧。">
   
     <link rel="alternative" href="/atom.xml" title="Mr. Luo Says" type="application/atom+xml">
   
@@ -103,6 +103,9 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
                 <!-- 文章目录 -->
                 
         <p>写个简单分享，作为第一次成功参加天池竞赛的纪念吧。</p>
+<center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=33941662&auto=1&height=66"></iframe></center>
+
+<a id="more"></a>
 <p>要完成的任务是：预测User处于哪个Shop</p>
 <p>先看看是否能对User画像，数据探索一波发现相同用户去的还是比较少的。<br>那么考虑能否对Shop画像呢？(category,price不知道咋用)</p>
 <p>两个方向，Shop的WiFi环境(WiFi_info)，Shop的时空特征(time_stamp,longtitude,latitude)，</p>
@@ -121,12 +124,17 @@ color="0,0,0" opacity='0.4' zIndex="-2" count="120" src="//cdn.bootcss.com/canva
 <p>第二是Shop的时空特征</p>
 <p>时间上<br>首先可视化一下，发现周末/工作日的峰值有差异<br>再发现工作日基本上可以分 饭点/非饭点<br>以及该shop的营业时间 啥时候开门 啥时候关门<br>分时间段来说 该shop的哪段时间人流量更多<br>还可以和WiFi放在一起考虑<br>空间上经纬度就行了</p>
 <p>直接上特征吧。</p>
-<h1 id="第一组特征-对该记录的Top-10-Wifi-signal"><a href="#第一组特征-对该记录的Top-10-Wifi-signal" class="headerlink" title="第一组特征 对该记录的Top 10 Wifi_signal"></a>第一组特征 对该记录的Top 10 Wifi_signal</h1><h1 id="统计Wifi在该shop的强度总贡献量中的比例-10-Σsignal-i-in-shop-ΣΣsignal-shop-all-取"><a href="#统计Wifi在该shop的强度总贡献量中的比例-10-Σsignal-i-in-shop-ΣΣsignal-shop-all-取" class="headerlink" title="统计Wifi在该shop的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(shop_all))(取-)"></a>统计Wifi在该shop的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(shop_all))(取-)</h1><h1 id="统计该shop中Wifi的强度总贡献量中的比例-10-Σsignal-i-in-shop-ΣΣsignal-wifi-all-取"><a href="#统计该shop中Wifi的强度总贡献量中的比例-10-Σsignal-i-in-shop-ΣΣsignal-wifi-all-取" class="headerlink" title="统计该shop中Wifi的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(wifi_all))(取-)"></a>统计该shop中Wifi的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(wifi_all))(取-)</h1><h1 id="以及-Wifi-signal的Top-15的均值，和值-2"><a href="#以及-Wifi-signal的Top-15的均值，和值-2" class="headerlink" title="以及 Wifi_signal的Top 15的均值，和值 2"></a>以及 Wifi_signal的Top 15的均值，和值 2</h1><h1 id="Wifi-Signal的最大值-最小值在强度之和中的比例-2-signal-i-Σsignal"><a href="#Wifi-Signal的最大值-最小值在强度之和中的比例-2-signal-i-Σsignal" class="headerlink" title="Wifi Signal的最大值/最小值在强度之和中的比例 2 (signal_i/Σsignal)"></a>Wifi Signal的最大值/最小值在强度之和中的比例 2 (signal_i/Σsignal)</h1><h1 id="第二组特征-对该记录的Top-10-Bssid-count"><a href="#第二组特征-对该记录的Top-10-Bssid-count" class="headerlink" title="第二组特征 对该记录的Top 10 Bssid_count"></a>第二组特征 对该记录的Top 10 Bssid_count</h1><h1 id="统计-Bssid在shop-id出现且强度偏差-5的记录个数以及比例-10-10"><a href="#统计-Bssid在shop-id出现且强度偏差-5的记录个数以及比例-10-10" class="headerlink" title="统计 Bssid在shop_id出现且强度偏差+-5的记录个数以及比例 10+10"></a>统计 Bssid在shop_id出现且强度偏差+-5的记录个数以及比例 10+10</h1><h1 id="统计-count-wifi-shop-count-wifi-10"><a href="#统计-count-wifi-shop-count-wifi-10" class="headerlink" title="统计 count(wifi_shop)/count(wifi) 10"></a>统计 count(wifi_shop)/count(wifi) 10</h1><h1 id="统计-count-wifi-shop-count-shop-10"><a href="#统计-count-wifi-shop-count-shop-10" class="headerlink" title="统计 count(wifi_shop)/count(shop) 10"></a>统计 count(wifi_shop)/count(shop) 10</h1><h1 id="第三组特征-对该记录的Top-10-强度序列"><a href="#第三组特征-对该记录的Top-10-强度序列" class="headerlink" title="第三组特征 对该记录的Top 10 强度序列"></a>第三组特征 对该记录的Top 10 强度序列</h1><h1 id="统计-强度序列在shop-id的LCS-逆序对-交集个数-强度距离-曼哈顿-Jaccard-4"><a href="#统计-强度序列在shop-id的LCS-逆序对-交集个数-强度距离-曼哈顿-Jaccard-4" class="headerlink" title="统计 强度序列在shop_id的LCS/逆序对/交集个数/强度距离(曼哈顿)/Jaccard 4"></a>统计 强度序列在shop_id的LCS/逆序对/交集个数/强度距离(曼哈顿)/Jaccard 4</h1><h1 id="统计-强度序列在shop-id的方差-10"><a href="#统计-强度序列在shop-id的方差-10" class="headerlink" title="统计 强度序列在shop_id的方差 10"></a>统计 强度序列在shop_id的方差 10</h1><h1 id="统计-强度序列中某个bssid在shop-id中的方差-10"><a href="#统计-强度序列中某个bssid在shop-id中的方差-10" class="headerlink" title="统计 强度序列中某个bssid在shop_id中的方差 10"></a>统计 强度序列中某个bssid在shop_id中的方差 10</h1><h1 id="统计-Signal在shop-id出现且强度偏差-5的同Rank的个数以及比例-10-10"><a href="#统计-Signal在shop-id出现且强度偏差-5的同Rank的个数以及比例-10-10" class="headerlink" title="统计 Signal在shop_id出现且强度偏差+-5的同Rank的个数以及比例 10+10"></a>统计 Signal在shop_id出现且强度偏差+-5的同Rank的个数以及比例 10+10</h1><h1 id="统计-Bssid在shop-id出现的同Rank的个数以及比例-10-10"><a href="#统计-Bssid在shop-id出现的同Rank的个数以及比例-10-10" class="headerlink" title="统计 Bssid在shop_id出现的同Rank的个数以及比例 10+10"></a>统计 Bssid在shop_id出现的同Rank的个数以及比例 10+10</h1><h1 id="第四组特征-对该记录的time-stamp"><a href="#第四组特征-对该记录的time-stamp" class="headerlink" title="第四组特征 对该记录的time_stamp"></a>第四组特征 对该记录的time_stamp</h1><h1 id="统计-工作日-非工作日-双模型-1"><a href="#统计-工作日-非工作日-双模型-1" class="headerlink" title="统计 工作日/非工作日 (双模型) 1"></a>统计 工作日/非工作日 (双模型) 1</h1><h1 id="统计-出行时间-在shop-id中的人流量概率-1"><a href="#统计-出行时间-在shop-id中的人流量概率-1" class="headerlink" title="统计 出行时间(在shop_id中的人流量概率) 1"></a>统计 出行时间(在shop_id中的人流量概率) 1</h1><h1 id="统计-在某小时内该Wifi的强度与该小时中所有强度比值-1"><a href="#统计-在某小时内该Wifi的强度与该小时中所有强度比值-1" class="headerlink" title="统计 在某小时内该Wifi的强度与该小时中所有强度比值 1"></a>统计 在某小时内该Wifi的强度与该小时中所有强度比值 1</h1><h1 id="统计-在某小时内该Wifi的出现次数与该小时总出现次数的比值-1"><a href="#统计-在某小时内该Wifi的出现次数与该小时总出现次数的比值-1" class="headerlink" title="统计 在某小时内该Wifi的出现次数与该小时总出现次数的比值 1"></a>统计 在某小时内该Wifi的出现次数与该小时总出现次数的比值 1</h1><h1 id="统计-营业时间-在shop-id中是否开门-1"><a href="#统计-营业时间-在shop-id中是否开门-1" class="headerlink" title="统计 营业时间(在shop_id中是否开门) 1"></a>统计 营业时间(在shop_id中是否开门) 1</h1><h1 id="第五组特征-对该记录的经纬度"><a href="#第五组特征-对该记录的经纬度" class="headerlink" title="第五组特征 对该记录的经纬度"></a>第五组特征 对该记录的经纬度</h1><h1 id="统计-店铺与用户的经纬度曼哈顿距离-1"><a href="#统计-店铺与用户的经纬度曼哈顿距离-1" class="headerlink" title="统计 店铺与用户的经纬度曼哈顿距离 1"></a>统计 店铺与用户的经纬度曼哈顿距离 1</h1>
+<p> 第一组特征 对该记录的Top 10 Wifi_signal<br> 统计Wifi在该shop的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(shop_all))(取-)<br> 统计该shop中Wifi的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(wifi_all))(取-)<br> 以及 Wifi_signal的Top 15的均值，和值 2<br> Wifi Signal的最大值/最小值在强度之和中的比例 2 (signal_i/Σsignal)</p>
+<p> 第二组特征 对该记录的Top 10 Bssid_count<br> 统计 Bssid在shop_id出现且强度偏差+-5的记录个数以及比例 10+10<br> 统计 count(wifi_shop)/count(wifi) 10<br> 统计 count(wifi_shop)/count(shop) 10</p>
+<p> 第三组特征 对该记录的Top 10 强度序列<br> 统计 强度序列在shop_id的LCS/逆序对/交集个数/强度距离(曼哈顿)/Jaccard 4<br> 统计 强度序列在shop_id的方差 10<br> 统计 强度序列中某个bssid在shop_id中的方差 10<br> 统计 Signal在shop_id出现且强度偏差+-5的同Rank的个数以及比例 10+10<br> 统计 Bssid在shop_id出现的同Rank的个数以及比例 10+10</p>
+<p> 第四组特征 对该记录的time_stamp<br> 统计 工作日/非工作日 (双模型) 1<br> 统计 出行时间(在shop_id中的人流量概率) 1<br> 统计 在某小时内该Wifi的强度与该小时中所有强度比值 1<br> 统计 在某小时内该Wifi的出现次数与该小时总出现次数的比值 1<br> 统计 营业时间(在shop_id中是否开门) 1</p>
+<p> 第五组特征 对该记录的经纬度<br> 统计 店铺与用户的经纬度曼哈顿距离 1</p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://thinklbl.win/2017/11/16/天池-商铺Wifi精准定位/" data-id="cja2l9j7d00011sp6lwezwetg" class="article-share-link" data-share="baidu" data-title="天池-商铺Wifi精准定位">Share</a>
+        <a data-url="https://thinklbl.win/2017/11/16/天池-商铺Wifi精准定位/" data-id="cja2lelzx00052op6qb2atucx" class="article-share-link" data-share="baidu" data-title="天池-商铺Wifi精准定位">Share</a>
       
 
       
