@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title><![CDATA[天池-商铺Wifi精准定位]]></title>
+      <url>/2017/11/16/%E5%A4%A9%E6%B1%A0-%E5%95%86%E9%93%BAWifi%E7%B2%BE%E5%87%86%E5%AE%9A%E4%BD%8D/</url>
+      <content type="html"><![CDATA[<p>写个简单分享，作为第一次成功参加天池竞赛的纪念吧。</p>
+<p>要完成的任务是：预测User处于哪个Shop</p>
+<p>先看看是否能对User画像，数据探索一波发现相同用户去的还是比较少的。<br>那么考虑能否对Shop画像呢？(category,price不知道咋用)</p>
+<p>两个方向，Shop的WiFi环境(WiFi_info)，Shop的时空特征(time_stamp,longtitude,latitude)，</p>
+<p>那首先是对这个应用场景的思考，在实际生活里我们连接WiFi的场景以及WiFi的环境是什么样子的？<br>一个很简单的问题，在我们宿舍，四个人连接到的WiFi环境会不会是差不多的呢？<br>即每个人在不同地区连接到的WiFi取决于该点的WiFi的信号叠加（大概是这样），但在一个shop里，WiFi环境相对稳定<br>比如，我们宿舍的WiFi环境（AP）相对来说稳定，其反应为我们宿舍四个人都可以连到bssid/signal 都差不多的WiFi<br>那么其实可以发现只要通过User的记录确定宿舍里<code>稳定</code>的WiFi环境就可以解决很多疑难杂症，<br>此处初步构造的<code>稳定</code>的WiFi环境指的是<code>bssid: signal</code>序列<br>那么该Shop的WiFi环境画像完成了一个骨架，继续考虑在这个序列里，不同bssid的WiFi是否会有不一样的重要性呢？<br>序列分析的三个方向嘛，频率/值大小/Rank，然后在这三个方向里用 统计方法/数值方法/算法方法(瞎jb搞方法)<br>通过User的信息，与Shop的一些属性进行交互，构造特征<br>在这道题里，针对<code>bssid: signal</code>最直观的想法是(可能会有线性相关的)</p>
+<p>对bssid的出现来说<br>1.bssid的出现频率(该bssid对shop的贡献 count(wifi_shop)/count(shop),该bssid对wifi的贡献 count(wifi_shop)/count(shop))<br>2.bssid在shop_id出现且强度偏差某个值的记录个数以及比例<br>3.signal在shop_id出现在同Rank的情况下且强度偏差某个值的记录个数以及比例<br>4.bssid在shop_id出现在同Rank的情况下的记录个数以及比例</p>
+<p>对bssid对应的signal来说<br>1.signal在该店铺出现过的所有值的，和值/均值/中位数/众数/历史最大值/方差<br>2.signal在全部WiFi环境中出现过的，和值/均值/中位数/众数/历史最大值/方差<br>3.signal的和值(统计WiFi在该shop的强度总贡献量中的比例，统计该shop中Wifi的强度总贡献量中的比例)<br>4.signal的均值(统计WiFi在该shop的强度均值在总均值的比例，统计该shop中WiFi的强度总贡献量中的比例)<br>5.signal的众数(反映的是用户出现次数最多的地方)<br>6.signal的最大值(反映的是用户出现过的离AP最近的地方)<br>7.signal的方差(该WiFi的稳定程度)</p>
+<p>对bssid: signal的序列来说</p>
+<ol>
+<li>LCS(最长公共子序列)</li>
+<li>Rank相似程度(逆序数)</li>
+<li>交集个数</li>
+<li>强度距离</li>
+<li>Rank的平均距离</li>
+</ol>
+<p>构造shop的环境方法一般有两种<br>1.简单加权signal,count,rank<br>2.拟合分布的模型(高斯分布，伯努利分布)<br>整个思路就是怎么把WiFi的特征尽可能地表达出来，减少信息损失。</p>
+<p>第二是Shop的时空特征</p>
+<p>时间上<br>首先可视化一下，发现周末/工作日的峰值有差异<br>再发现工作日基本上可以分 饭点/非饭点<br>以及该shop的营业时间 啥时候开门 啥时候关门<br>分时间段来说 该shop的哪段时间人流量更多<br>还可以和WiFi放在一起考虑<br>空间上经纬度就行了</p>
+<p>直接上特征吧。</p>
+<h1 id="第一组特征-对该记录的Top-10-Wifi-signal"><a href="#第一组特征-对该记录的Top-10-Wifi-signal" class="headerlink" title="第一组特征 对该记录的Top 10 Wifi_signal"></a>第一组特征 对该记录的Top 10 Wifi_signal</h1><h1 id="统计Wifi在该shop的强度总贡献量中的比例-10-Σsignal-i-in-shop-ΣΣsignal-shop-all-取"><a href="#统计Wifi在该shop的强度总贡献量中的比例-10-Σsignal-i-in-shop-ΣΣsignal-shop-all-取" class="headerlink" title="统计Wifi在该shop的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(shop_all))(取-)"></a>统计Wifi在该shop的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(shop_all))(取-)</h1><h1 id="统计该shop中Wifi的强度总贡献量中的比例-10-Σsignal-i-in-shop-ΣΣsignal-wifi-all-取"><a href="#统计该shop中Wifi的强度总贡献量中的比例-10-Σsignal-i-in-shop-ΣΣsignal-wifi-all-取" class="headerlink" title="统计该shop中Wifi的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(wifi_all))(取-)"></a>统计该shop中Wifi的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(wifi_all))(取-)</h1><h1 id="以及-Wifi-signal的Top-15的均值，和值-2"><a href="#以及-Wifi-signal的Top-15的均值，和值-2" class="headerlink" title="以及 Wifi_signal的Top 15的均值，和值 2"></a>以及 Wifi_signal的Top 15的均值，和值 2</h1><h1 id="Wifi-Signal的最大值-最小值在强度之和中的比例-2-signal-i-Σsignal"><a href="#Wifi-Signal的最大值-最小值在强度之和中的比例-2-signal-i-Σsignal" class="headerlink" title="Wifi Signal的最大值/最小值在强度之和中的比例 2 (signal_i/Σsignal)"></a>Wifi Signal的最大值/最小值在强度之和中的比例 2 (signal_i/Σsignal)</h1><h1 id="第二组特征-对该记录的Top-10-Bssid-count"><a href="#第二组特征-对该记录的Top-10-Bssid-count" class="headerlink" title="第二组特征 对该记录的Top 10 Bssid_count"></a>第二组特征 对该记录的Top 10 Bssid_count</h1><h1 id="统计-Bssid在shop-id出现且强度偏差-5的记录个数以及比例-10-10"><a href="#统计-Bssid在shop-id出现且强度偏差-5的记录个数以及比例-10-10" class="headerlink" title="统计 Bssid在shop_id出现且强度偏差+-5的记录个数以及比例 10+10"></a>统计 Bssid在shop_id出现且强度偏差+-5的记录个数以及比例 10+10</h1><h1 id="统计-count-wifi-shop-count-wifi-10"><a href="#统计-count-wifi-shop-count-wifi-10" class="headerlink" title="统计 count(wifi_shop)/count(wifi) 10"></a>统计 count(wifi_shop)/count(wifi) 10</h1><h1 id="统计-count-wifi-shop-count-shop-10"><a href="#统计-count-wifi-shop-count-shop-10" class="headerlink" title="统计 count(wifi_shop)/count(shop) 10"></a>统计 count(wifi_shop)/count(shop) 10</h1><h1 id="第三组特征-对该记录的Top-10-强度序列"><a href="#第三组特征-对该记录的Top-10-强度序列" class="headerlink" title="第三组特征 对该记录的Top 10 强度序列"></a>第三组特征 对该记录的Top 10 强度序列</h1><h1 id="统计-强度序列在shop-id的LCS-逆序对-交集个数-强度距离-曼哈顿-Jaccard-4"><a href="#统计-强度序列在shop-id的LCS-逆序对-交集个数-强度距离-曼哈顿-Jaccard-4" class="headerlink" title="统计 强度序列在shop_id的LCS/逆序对/交集个数/强度距离(曼哈顿)/Jaccard 4"></a>统计 强度序列在shop_id的LCS/逆序对/交集个数/强度距离(曼哈顿)/Jaccard 4</h1><h1 id="统计-强度序列在shop-id的方差-10"><a href="#统计-强度序列在shop-id的方差-10" class="headerlink" title="统计 强度序列在shop_id的方差 10"></a>统计 强度序列在shop_id的方差 10</h1><h1 id="统计-强度序列中某个bssid在shop-id中的方差-10"><a href="#统计-强度序列中某个bssid在shop-id中的方差-10" class="headerlink" title="统计 强度序列中某个bssid在shop_id中的方差 10"></a>统计 强度序列中某个bssid在shop_id中的方差 10</h1><h1 id="统计-Signal在shop-id出现且强度偏差-5的同Rank的个数以及比例-10-10"><a href="#统计-Signal在shop-id出现且强度偏差-5的同Rank的个数以及比例-10-10" class="headerlink" title="统计 Signal在shop_id出现且强度偏差+-5的同Rank的个数以及比例 10+10"></a>统计 Signal在shop_id出现且强度偏差+-5的同Rank的个数以及比例 10+10</h1><h1 id="统计-Bssid在shop-id出现的同Rank的个数以及比例-10-10"><a href="#统计-Bssid在shop-id出现的同Rank的个数以及比例-10-10" class="headerlink" title="统计 Bssid在shop_id出现的同Rank的个数以及比例 10+10"></a>统计 Bssid在shop_id出现的同Rank的个数以及比例 10+10</h1><h1 id="第四组特征-对该记录的time-stamp"><a href="#第四组特征-对该记录的time-stamp" class="headerlink" title="第四组特征 对该记录的time_stamp"></a>第四组特征 对该记录的time_stamp</h1><h1 id="统计-工作日-非工作日-双模型-1"><a href="#统计-工作日-非工作日-双模型-1" class="headerlink" title="统计 工作日/非工作日 (双模型) 1"></a>统计 工作日/非工作日 (双模型) 1</h1><h1 id="统计-出行时间-在shop-id中的人流量概率-1"><a href="#统计-出行时间-在shop-id中的人流量概率-1" class="headerlink" title="统计 出行时间(在shop_id中的人流量概率) 1"></a>统计 出行时间(在shop_id中的人流量概率) 1</h1><h1 id="统计-在某小时内该Wifi的强度与该小时中所有强度比值-1"><a href="#统计-在某小时内该Wifi的强度与该小时中所有强度比值-1" class="headerlink" title="统计 在某小时内该Wifi的强度与该小时中所有强度比值 1"></a>统计 在某小时内该Wifi的强度与该小时中所有强度比值 1</h1><h1 id="统计-在某小时内该Wifi的出现次数与该小时总出现次数的比值-1"><a href="#统计-在某小时内该Wifi的出现次数与该小时总出现次数的比值-1" class="headerlink" title="统计 在某小时内该Wifi的出现次数与该小时总出现次数的比值 1"></a>统计 在某小时内该Wifi的出现次数与该小时总出现次数的比值 1</h1><h1 id="统计-营业时间-在shop-id中是否开门-1"><a href="#统计-营业时间-在shop-id中是否开门-1" class="headerlink" title="统计 营业时间(在shop_id中是否开门) 1"></a>统计 营业时间(在shop_id中是否开门) 1</h1><h1 id="第五组特征-对该记录的经纬度"><a href="#第五组特征-对该记录的经纬度" class="headerlink" title="第五组特征 对该记录的经纬度"></a>第五组特征 对该记录的经纬度</h1><h1 id="统计-店铺与用户的经纬度曼哈顿距离-1"><a href="#统计-店铺与用户的经纬度曼哈顿距离-1" class="headerlink" title="统计 店铺与用户的经纬度曼哈顿距离 1"></a>统计 店铺与用户的经纬度曼哈顿距离 1</h1>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[机器学习入门计划]]></title>
       <url>/2017/10/04/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/</url>
       <content type="html"><![CDATA[<p>　　Hello! <font color="red">Machine Learning!</font></p>
@@ -68,11 +95,11 @@
         
         <tags>
             
-            <tag> 18岁 </tag>
-            
             <tag> 影评 </tag>
             
             <tag> 爱情 </tag>
+            
+            <tag> 18岁 </tag>
             
         </tags>
         
@@ -138,9 +165,9 @@
         
         <tags>
             
-            <tag> 年度计划 </tag>
-            
             <tag> 18岁 </tag>
+            
+            <tag> 年度计划 </tag>
             
         </tags>
         
