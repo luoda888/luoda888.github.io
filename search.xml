@@ -25,11 +25,11 @@
 </ol>
 <p>构造shop的环境方法一般有两种<br>1.简单加权signal,count,rank<br>2.拟合分布的模型(高斯分布，伯努利分布)<br>整个思路就是怎么把WiFi的特征尽可能地表达出来，减少信息损失。</p>
 <p>第二是Shop的时空特征</p>
-<p>时间上<br>首先可视化一下，发现周末/工作日的峰值有差异<br>再发现工作日基本上可以分 饭点/非饭点<br>以及该shop的营业时间 啥时候开门 啥时候关门<br>分时间段来说 该shop的哪段时间人流量更多<br>还可以和WiFi放在一起考虑<br>空间上经纬度就行了</p>
+<p>时间上<br>首先可视化一下，发现周末/工作日的峰值有差异 (双模型)<br>再发现工作日基本上可以分 饭点/非饭点<br>以及该shop的营业时间 啥时候开门 啥时候关门<br>分时间段来说 该shop的哪段时间人流量更多<br>还可以和WiFi放在一起考虑<br>空间上经纬度就行了</p>
 <p>直接上特征吧。</p>
 <p> 第一组特征 对该记录的Top 10 Wifi_signal<br> 统计Wifi在该shop的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(shop_all))(取-)<br> 统计该shop中Wifi的强度总贡献量中的比例 10 (Σsignal_i(in_shop)/ΣΣsignal(wifi_all))(取-)<br> 以及 Wifi_signal的Top 15的均值，和值 2<br> Wifi Signal的最大值/最小值在强度之和中的比例 2 (signal_i/Σsignal)</p>
-<p> 第二组特征 对该记录的Top 10 Bssid_count<br> 统计 Bssid在shop_id出现且强度偏差+-5的记录个数以及比例 10+10<br> 统计 count(wifi_shop)/count(wifi) 10<br> 统计 count(wifi_shop)/count(shop) 10</p>
-<p> 第三组特征 对该记录的Top 10 强度序列<br> 统计 强度序列在shop_id的LCS/逆序对/交集个数/强度距离(曼哈顿)/Jaccard 4<br> 统计 强度序列在shop_id的方差 10<br> 统计 强度序列中某个bssid在shop_id中的方差 10<br> 统计 Signal在shop_id出现且强度偏差+-5的同Rank的个数以及比例 10+10<br> 统计 Bssid在shop_id出现的同Rank的个数以及比例 10+10</p>
+<p> 第二组特征 对该记录的Top 10 Bssid_count<br> 统计 Bssid在shop_id出现且强度偏差+-5的记录个数以及比例 5+5<br> 统计 count(wifi_shop)/count(wifi) 10<br> 统计 count(wifi_shop)/count(shop) 10</p>
+<p> 第三组特征 对该记录的Top 10 强度序列<br> 统计 强度序列在shop_id的LCS/逆序对/交集个数/强度距离(曼哈顿)/Jaccard 4<br> 统计 强度序列中WiFi在整个环境的方差 1<br> 统计 强度序列中某个bssid在shop_id中的方差 1<br> 统计 Signal在shop_id出现且强度偏差+-5的同Rank的个数以及比例 5+5</p>
 <p> 第四组特征 对该记录的time_stamp<br> 统计 工作日/非工作日 (双模型) 1<br> 统计 出行时间(在shop_id中的人流量概率) 1<br> 统计 在某小时内该Wifi的强度与该小时中所有强度比值 1<br> 统计 在某小时内该Wifi的出现次数与该小时总出现次数的比值 1<br> 统计 营业时间(在shop_id中是否开门) 1</p>
 <p> 第五组特征 对该记录的经纬度<br> 统计 店铺与用户的经纬度曼哈顿距离 1</p>
 ]]></content>
